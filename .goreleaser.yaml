@@ -4,8 +4,8 @@ project_name: photoorg
 
 before:
   hooks:
-    - "cd frontend && npm ci"
-    - "cd frontend && npm run build"
+    - bash -c "cd frontend && npm ci"
+    - bash -c "cd frontend && npm run build"
 
 builds:
   - env:
@@ -25,10 +25,12 @@ builds:
     binary: photoorg
 
 archives:
-  - format: tar.gz
+  - formats:
+      - tar.gz
     format_overrides:
       - goos: windows
-        format: zip
+        formats:
+          - zip
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - README.md
