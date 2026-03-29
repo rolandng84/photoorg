@@ -1,0 +1,17 @@
+# Go
+photoorg.exe
+photoorg
+
+# Data
+data/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.idea/
+.vscode/
+
+# Env
+.env

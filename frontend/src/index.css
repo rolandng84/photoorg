@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* Industrial Dark Theme - mapped from v1 palette */
+@theme {
+  --color-industrial-950: #0A0A0B;
+  --color-industrial-900: #121214;
+  --color-industrial-800: #1E1E21;
+  --color-industrial-700: #2A2A2E;
+  --color-industrial-600: #3F3F46;
+  --color-industrial-500: #71717A;
+  --color-industrial-400: #A1A1AA;
+  --color-industrial-300: #D4D4D8;
+  --color-industrial-200: #E4E4E7;
+  --color-industrial-100: #F4F4F5;
+  --color-industrial-50: #FAFAFA;
+
+  --color-accent: #3B82F6;
+  --color-accent-dark: #2563EB;
+  --color-accent-light: #60A5FA;
+
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Figtree", sans-serif;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-industrial-950);
+  color: var(--color-industrial-300);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Industrial grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-industrial-900); }
+::-webkit-scrollbar-thumb { background: var(--color-industrial-700); border: 1px solid var(--color-industrial-600); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+/* Reusable component classes */
+.terminal-panel {
+  background-color: var(--color-industrial-900);
+  border: 1px solid var(--color-industrial-800);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+  background-color: var(--color-industrial-800);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-industrial-700);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-industrial-400);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-field {
+  background-color: var(--color-industrial-950);
+  border: 1px solid var(--color-industrial-700);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  color: var(--color-industrial-300);
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-field:focus {
+  border-color: var(--color-accent);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-industrial-600);
+  color: var(--color-industrial-400);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Accent glow */
+.glow-accent {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-industrial-800) 25%,
+    var(--color-industrial-700) 50%,
+    var(--color-industrial-800) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite ease-in-out;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
